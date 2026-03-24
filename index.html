@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRICK BREAKER</title>
+    <link rel="icon" type="image/x-icon" href="22.png">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+          margin: 0;
+          font-family: "Silkscreen";
+          height: 100vh;
+          background-image: url('p.jpg'); 
+          background-size: cover;
+          background-position: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;  
+      }
+
+      .start-container {
+            text-align: center;
+            height: 350px;
+            width:275px;
+            font-size: 16px;
+            font-family: "Silkscreen";
+            color:rgb(231,206,255);
+            background: rgba(0, 0, 0,0.25); 
+            padding: 50px;
+            border-radius: 30px;
+  
+        }
+
+      .start-button {
+            --glow-color: rgb(217,176,255); 
+            --glow-spread-color: rgb(191,123,255,0.781);
+            --enhanced-glow-color: rgb(231,206,255); 
+            --btn-color: rgb(100,61,136); 
+            margin-top: 40px;
+            padding: 1em 3em;
+            color:var(--glow-color);
+            border: 0.25em solid var(--glow-color);
+            font-size: 20px;
+            font-family: "Silkscreen";
+            font-weight: bold;
+            background-color: var(--btn-color);
+            border-radius: 1em;
+            outline: none;
+            box-shadow: 
+            0 0 1.5em 0.3em var(--glow-color), 
+            0 0 5em 1.5em var(--glow-spread-color), 
+            inset 0 0 1em 0.5em var(--glow-color); 
+            text-shadow: 
+            0 0 0.5em var(--glow-color), 
+            0 0 1em var(--glow-color), 
+            0 0 2em var(--glow-color); 
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+          
+      button::after {
+            pointer-events: none;
+            content: "";
+            position: absolute;
+            top: 120%;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: var(--glow-spread-color);
+            filter: blur(4em); 
+            opacity: 0.9; 
+            transform: perspective(1.5em) rotatex(35deg) scale(1, 0.6);
+          }
+          
+      .start-button:hover {
+            color: var(--btn-color);
+            background-color: var(--glow-color);
+            box-shadow: 
+            0 0 2em 0.5em var(--glow-color), 
+            0 0 8em 3em var(--glow-spread-color), 
+            inset 0 0 1.5em 0.5em var(--glow-color); 
+          }
+          
+      .start-button:active {
+            box-shadow: 
+            0 0 1em 0.5em var(--glow-color), 
+            0 0 5em 3em var(--glow-spread-color), 
+            inset 0 0 1em 0.5em var(--glow-color); 
+          }
+
+      .footer {
+            position: fixed;
+            bottom: 6px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(231, 206, 255, 0.5);
+            padding: 10px;
+          } 
+          
+  </style>
+
+</head>
+
+<body>
+    <div class="start-container">
+    <h1>Welcome to the Game!</h1>
+    <button class="start-button" onclick="startGame()">START &gt;</button>
+    </div>
+
+    <audio id="background-sound" src="01. Ground Theme.mp3" preload="auto"></audio>
+
+    <script>
+     function startGame() {
+         let audio = document.getElementById("background-sound");
+         audio.play();
+         localStorage.setItem("audioPlaying", "true");
+         setTimeout(function() {
+             window.location.href = 'brickbreaker2.html'; 
+         }, 500);
+        }
+    </script>
+
+<footer class="footer">
+      <p>&copy; 2025 Brick Breaker Game</p>
+</footer>
+
+</body>
+
+</html>

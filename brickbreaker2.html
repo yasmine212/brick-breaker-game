@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Breaker</title>
+    <link rel="icon" type="image/x-icon" href="22.png">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+   
+<style>
+    body {
+      margin: 0;
+      font-family: "Silkscreen";
+      height: 100vh;
+      background-image: url('6.jpg'); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+    
+    .username-container {
+      text-align: center;
+      height: 450px;
+      width: 300px;
+      font-size: 18px;
+      font-family: "Silkscreen";
+      color: rgb(231,206,255);
+      background: rgba(0, 0, 0,0.25); 
+      padding: 50px; 
+      border-radius: 30px;
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 15px;  
+      width: 100%; 
+      max-width: 375px;
+      box-sizing: border-box; 
+      }
+   
+    .submit{
+      --glow-color: rgb(217,176,255); 
+      --glow-spread-color: rgb(191,123,255,0.781);
+      --enhanced-glow-color:rgb(231,206,255); 
+      --btn-color: rgb(100,61,136); 
+      margin-top: 40px;
+      padding: 1em 3em;
+      color:var(--glow-color);
+      border: 0.25em solid var(--glow-color);
+      font-size: 20px;
+      font-family: "Silkscreen";
+      font-weight: bold;
+      background-color: var(--btn-color);
+      border-radius: 1em;
+      outline: none;
+      box-shadow: 
+      0 0 1.5em 0.3em var(--glow-color), 
+      0 0 5em 1.5em var(--glow-spread-color), 
+      inset 0 0 1em 0.5em var(--glow-color); 
+      text-shadow: 
+      0 0 0.5em var(--glow-color), 
+      0 0 1em var(--glow-color), 
+      0 0 2em var(--glow-color); 
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    
+    button::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      top: 120%;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: var(--glow-spread-color);
+      filter: blur(4em); 
+      opacity: 0.9; 
+      transform: perspective(1.5em) rotatex(35deg) scale(1, 0.6);
+    }
+    
+    .submit:hover {
+      color: var(--btn-color);
+      background-color: var(--glow-color);
+      box-shadow: 
+      0 0 2em 0.5em var(--glow-color), 
+      0 0 8em 3em var(--glow-spread-color), 
+      inset 0 0 1.5em 0.5em var(--glow-color); 
+    }
+    
+    .submit:active {
+      box-shadow: 
+      0 0 1em 0.5em var(--glow-color), 
+      0 0 5em 3em var(--glow-spread-color), 
+      inset 0 0 1em 0.5em var(--glow-color); 
+    }
+
+    .input {
+    font-family: "Silkscreen";
+    font-weight: 15;
+    font-size: 25px;
+    color:  rgb(231,206,255);
+    background-color: rgb(65, 30, 88); 
+    box-shadow: 
+    0 0 1vw rgba(230, 185, 255, 0.85), 
+    0 0 0.5vw rgba(191, 123, 255, 0.7),
+    0 0 1vw rgba(230, 185, 255, 0.85) inset; 
+    border-radius: 0.4vw;
+    border: none;
+    outline: none;
+    padding: 0.4vw;
+    max-width: 100%;
+    width: 100%;
+    transition: .4s;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+.input:hover {
+    box-shadow: 
+    0 0 1.5vw rgba(230, 185, 255, 0.85), 
+    0 0 1vw rgba(191, 123, 255, 0.7), 
+    0 0 1.5vw rgba(230, 185, 255, 0.85) inset; 
+}
+
+.input:focus {
+    box-shadow: 
+    0 0 2vw rgba(230, 185, 255, 0.85), 
+    0 0 1.5vw rgba(191, 123, 255, 0.7), 
+    0 0 2vw rgba(230, 185, 255, 0.85) inset; 
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+  }
+
+.modal-content {
+    background-color: rgba(0,0,0,0.9); 
+    color: rgb(232, 224, 239);
+    font-size: 25px;
+    padding: 40px; 
+    border-radius: 30px; 
+    text-align: center;
+    height: 350px;
+    width: 450px; 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); 
+  }
+
+.modal h2 {
+    margin-bottom: 22px;
+  }
+
+.modal button {
+    padding: 15px 30px;
+    margin-top: 35px;
+    background-color: rgb(232, 224, 239); 
+    color: rgb(0, 0, 0);
+    font-family: "Silkscreen";
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .button1:hover{
+      box-shadow:  0 0 20px rgb(0, 255, 0);
+    }
+  .button2:hover{
+      box-shadow: 0 0 20px rgb(255, 165, 0); 
+    }
+  .button3:hover{
+      box-shadow: 0 0 20px rgb(255, 0, 0);
+    }
+
+.footer {
+  position: fixed;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(231, 206, 255, 0.4);
+  padding: 10px;
+}
+
+</style>
+
+</head>
+
+<body>
+    <div class="username-container">
+        <h1>Enter your Username!</h1>
+        <input class="input" type="text" id="username" placeholder="Enter Username">
+        <button class="submit" onclick="submitUsername()">Submit</button>
+    </div>
+
+    <div id="myModal" class="modal">
+
+      <div class="modal-content">
+          <h2 id="greetingMessage"></h2>
+          <p>Select a Level</p> 
+          <button class="button1"onclick="startGame('easy')">Easy</button>
+          <button class="button2"onclick="startGame('medium')">Medium</button>
+          <button class="button3"onclick="startGame('hard')">Hard</button>
+      </div>
+
+    </div>
+
+    <audio id="background-sound" src="01. Ground Theme.mp3" preload="auto" loop></audio>
+
+    <script>
+          window.onload = function() {
+            let audio = document.getElementById("background-sound");
+            if (localStorage.getItem("audioPlaying") === "true") {
+                  audio.play();
+                }
+          };
+
+          function submitUsername() {
+            let username = document.getElementById("username").value;  
+            if (username) {
+                document.getElementById("greetingMessage").textContent = "Hello, " + username + "!";
+                document.getElementById("myModal").style.display = "flex";  
+            } else {
+                alert("Please enter a username!");
+            }
+          }
+
+          function startGame(level) {
+            window.location.href = "game.html?level=" + level; 
+          }
+    </script>
+
+<footer class="footer">
+    <p>&copy; 2025 Brick Breaker Game</p>
+</footer>
+  
+</body>
+</html>
+  

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Brick Breaker</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="icon" type="image/x-icon" href="22.png">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="mute">
+        <button id="pauseButton">
+          <img src="pausee.png" id="buttonImage" />
+        </button>
+    </div>
+
+    <div style="position: absolute; top: 10px; left: 10px; font-size: 20px;">
+        <span id="scoreLabel">Score: </span><span id="currentScore">0</span>
+    </div>
+
+    <h2 id="scoreBoard">Lives Left: 💜💜💜</h2>
+
+    <canvas id="casse_brique" width="600" height="350"></canvas>
+
+    <footer class="footer">
+        <p>&copy; 2025 Brick Breaker Game</p>
+    </footer>
+
+    <div id="gameOverModal" class="modal" style="display:none;">
+
+        <div class="modal-content">
+            <h2 id="gameOverText">Game Over</h2>
+            <p>Your total score: <span id="finalScore"></span></p>
+            <button onclick="restartGame()">RESTART &gt;</button>
+            <button onclick="quitGame()">Quit</button> 
+        </div>
+
+    </div>
+
+    <audio id="background-sound" src="01. Ground Theme.mp3" preload="auto" loop></audio>
+    <audio id="hit-sound" src="mixkit-winning-a-coin-video-game-2069.wav" preload="auto"></audio>
+    <audio id="win-sound" src="mixkit-completion-of-a-level-2063.wav"></audio>
+    <audio id="lose-sound" src="mixkit-sad-game-over-trombone-471.wav"></audio>
+
+    <script src="game.js"></script>
+    
+    <script>
+        window.onload = function() {
+            let audio = document.getElementById("background-sound");
+            if (localStorage.getItem("audioPlaying") === "true") {
+                audio.play();
+            }
+        };
+    </script>
+    
+</body>
+</html>
+
+
