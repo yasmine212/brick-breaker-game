@@ -1,3 +1,4 @@
+Live Demo: https://yasmine212.github.io/brick-breaker-game/
 # Brick Breaker Game 
 
 - **Type:** Web game  
