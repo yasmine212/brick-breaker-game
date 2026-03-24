@@ -18,4 +18,10 @@
 ---
 
 ## Screenshots
+![Game Start](screenshots/1.png)
+![Gamer Name](screenshots/2.png)
+![Game Level](screenshots/3.png)
+![Gameplay](screenshots/4.png)
+![Gameloose](screenshots/5.png)
+![Gamewin](screenshots/6.png)
 
