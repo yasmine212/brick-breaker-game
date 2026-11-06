@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: "Silkscreen";
   height: 100vh;
-  background-image: url('6.jpg');
+  background-image: url('../assets/images/background-game.jpg');
   background-size: cover;
   background-position: center;
   display: flex;

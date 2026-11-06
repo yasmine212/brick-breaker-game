@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonImage = document.getElementById("buttonImage");
     
     if (pauseButton && buttonImage) {
-        buttonImage.src = "pausee.png";
+        buttonImage.src = "assets/images/pause.png";
         
         pauseButton.addEventListener("click", () => {
             if (!isPaused) {
@@ -487,7 +487,7 @@ function pauseGame() {
     isPaused = true;
     const buttonImage = document.getElementById("buttonImage");
     if (buttonImage) {
-        buttonImage.src = "pausee.png"; 
+        buttonImage.src = "assets/images/pause.png"; 
     }
     cancelAnimationFrame(animationFrameId);
     stopBonusTimer();  
@@ -497,7 +497,7 @@ function resumeGame() {
     isPaused = false;
     const buttonImage = document.getElementById("buttonImage");
     if (buttonImage) {
-        buttonImage.src = "reprendre.png"; 
+        buttonImage.src = "assets/images/resume.png"; 
     }
     startBonusTimer();  
     animationFrameId = requestAnimationFrame(gameLoop);
